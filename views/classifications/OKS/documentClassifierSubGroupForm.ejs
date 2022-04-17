@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form
+        action="/admin/documentClassifiersubGroup/<% if(edit){%><%= documentClassifierSubGroup.id%>?_method=PUT<%}%>"
+        method="POST"
+      >
+        <h2>Подгруппа классификатора ОКС:</h2>
+        <label for="subGroupNumber">Подгруппа</label>
+        <input
+          type="text"
+          id="subGroupNumber"
+          name="subGroupNumber"
+          placeholder="Подгруппа..."
+          value="<% if(edit){%><%= documentClassifierSubGroup.subGroupNumber %><%}%>"
+        />
+
+        <label for="subGroupName">Имя_Подгруппы</label>
+        <input
+          type="text"
+          id="subGroupName"
+          name="subGroupName"
+          placeholder="Имя_Подгруппы..."
+          value="<% if(edit){%><%= documentClassifierSubGroup.subGroupName %><%}%>"
+        />
+        <label for="groupName">Имя группы</label>
+        <select name="group">
+          <% for(let document of documentsClassifierGroup) { %>
+          <option value="<%= document.id %>"><%= document.groupName %></option>
+          <%}%>
+        </select>
+        <input type="submit" value="Создайте" class="green" />
+      </form>
+    </div>
+  </body>
+</html>

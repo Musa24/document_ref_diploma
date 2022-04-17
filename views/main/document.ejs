@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-<% if(showSideMenu) {%>10<%}else{%>12<%}%> my-3">
+          <div class="projects mb-4">
+            <div class="projects-inner">
+              <header class="projects-header">
+                <div class="title">Список всех документов</div>
+               <% if(showButton){ %>
+                 <i class="zmdi">
+                  <a href="/admin/document/create">CREATE</a>
+                </i>
+                <%}%>
+              </header>
+              <table class="projects-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Номер документа</th>
+                    <th>Тип документа</th>
+                    <th>Уровень документа</th>
+                    <th>Классификатор ТС</th>
+                    <th>Орган утверждения регламента</th>
+                    <th>Наименование</th>
+                    <th>Статус документа</th>
+                    <th> Дата введения</th>
+                    <th> Дата издания</th>
+                    <th> Переиздание</th>
+                    <th> Дата последнего изменения</th>
+                    <% if(showButton){ %>
+                    <th>Actions</th>
+                    <%}%>
+                  </tr>
+                </thead>
+               
+                <% for (let document of documents) {%>
+                <tr>
+                  <td><%= ++counter %></td>
+                  <td><%= document.documentNumber %></td>
+                  <td title="<%= document.documentType.longName %>"><%= document.documentType.shortName %></td>
+                  <td title="<%= document.documentLevel.longName %>"><%= document.documentLevel.shortName %></td>
+                  <td title="<%= document.documentTC.longName %>"><%= document.documentTC.shortName %></td>
+                  <td title="<%= document.documentRegAppAuth.longName %>"><%= document.documentRegAppAuth.shortName %></td>
+                  <td><%= document.documentName %></td>
+                 <td><%= document.documentStatus.longName %></td>
+                 <td><%= document.introductionDate %></td>
+                 <td><%= document.publicationDate %></td>
+                 <td><%= document.documentReissue %></td>
+                 <td><%= document.lastModifiedDate %></td>
+            <!-- <td>Delete</td> -->
+             <% if(showButton){ %>
+                  <td class="delete-container">
+                    <form
+                      action="/admin/document/<%= document.id %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <button type="submit" class="btn btn-danger">
+                        <i class="zmdi zmdi-delete"></i> Delete
+                      </button>
+                    </form>
+                  </td>
+                  <%}%>
+                </tr>
+                <%}%>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>

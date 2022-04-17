@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document_ref</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,600"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/selectric.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Document_ref</a>
+
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link active" href="/logout">Sign out</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <% if(showSideMenu){%>
+        <nav class="col-md-2 d-none d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="/admin/document" class="nav-link active main" href="#">
+                  <i class="zmdi zmdi-file"></i>
+                  Созданные документы <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentLevel" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Уровень документа
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentType" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Тип документа
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentTC" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Классификатор ТС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentStatus" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Статус документа
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentRegAppAuth" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Орг_Утвержд регламента
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentPhaseLCPAS" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Фаза ЖЦ ПАС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentPhaseStage" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Этап фазы ЖЦ ПАС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentContentComponent" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  компонент
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/admin/documentRegGroup" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Группа регламента
+                </a>
+              </li>
+              <h6 class="separate">База ОКС</h6>
+              <li class="nav-item">
+                <a href="/admin/documentClassifierGroup" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Группа Кл.. ОКС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/documentClassifierSubGroup" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Подгруппа Кл.. ОКС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="/admin/documentClassifierSubGroupGroup"
+                  class="nav-link"
+                >
+                  <i class="zmdi zmdi-file"></i>
+                  Группа подгруппы Кл.. ОКС
+                </a>
+              </li>
+              <h6 class="separate">База КГС</h6>
+              <li class="nav-item">
+                <a href="/admin/KGS/documentClassifierGroup" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  Группа Кл.. КГС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="/admin/KGS/documentClassifierSubGroup"
+                  class="nav-link"
+                >
+                  <i class="zmdi zmdi-file"></i>
+                  Подгруппа Кл.. КГС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  href="/admin/KGS/documentClassifierSubGroupGroup"
+                  class="nav-link"
+                >
+                  <i class="zmdi zmdi-file"></i>
+                  Группа подгруппы Кл.. КГС
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/users" class="nav-link">
+                  <i class="zmdi zmdi-file"></i>
+                  пользователи
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <% }%> <%-body -%>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.selectric/1.10.1/jquery.selectric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+  </body>
+</html>

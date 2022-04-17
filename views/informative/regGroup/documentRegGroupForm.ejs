@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form
+        action="/admin/documentRegGroup/<% if(edit){%><%= documentRegGroup.id%>?_method=PUT<%}%>"
+        method="POST"
+      >
+        <h2>Группа регламента:</h2>
+        <label for="phase">Фаза_ЖЦ</label>
+        <select name="phase">
+          <!--  documentsPhaseLCPAS -->
+          <% for(let document of documentsPhaseLCPAS) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="phase">Этап_Фазы</label>
+        <select name="stagePhase">
+          <!--  documentsPhaseStage -->
+          <% for(let document of documentsPhaseStage) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="contentComponent">Компонент</label>
+        <select name="contentComponent">
+          <!--  documentsPhaseLCPAS -->
+          <% for(let document of documentsContentComponent) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="longName">Наименование Группы Регламентов</label>
+        <input
+          type="text"
+          id="longName"
+          name="longName"
+          placeholder="Наименование Группы Регламентов..."
+          value="<% if(edit){%><%= documentRegGroup.longName %><%}%>"
+        />
+
+        <input type="submit" value="Создайте" class="green" />
+      </form>
+    </div>
+  </body>
+</html>

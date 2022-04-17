@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+          <div class="projects mb-4">
+            <div class="projects-inner">
+              <header class="projects-header">
+                <div class="title">Подгруппа классификатора КГС</div>
+                <!-- <i class="zmdi zmdi-download"></i> -->
+                <i class="zmdi">
+                  <a href="/admin/KGS/documentClassifierSubGroup/create">CREATE</a>
+                </i>
+              </header>
+              <table class="projects-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Подгруппа</th>
+                    <th>Имя_Подгруппы</th>
+                    <th>Имя_Группы</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+               
+                <% for (let document of  documentsClassifierSubGroup) {%>
+                <tr>
+                  <td><%= ++counter %></td>
+                  <td><%= document.subGroup %></td>
+                  <td><%= document.subGroupName %></td>
+                  <td><%= document.group.groupName %></td>
+
+                  <!-- <td>Delete</td> -->
+                  <td class="delete-container">
+                    <form
+                      action="/admin/KGS/documentClassifierSubGroup/<%= document.id %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <button type="submit" class="btn btn-danger">
+                        <i class="zmdi zmdi-delete"></i> Delete
+                      </button>
+                    </form>
+                    <a
+                      href="/admin/KGS/documentClassifierSubGroup/<%= document.id %>"
+                      class="btn btn-primary"
+                      ><i class="zmdi zmdi-edit"></i> Edit</a
+                    >
+                  </td>
+                </tr>
+                <%}%>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>

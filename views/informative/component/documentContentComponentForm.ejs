@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <form
+        action="/admin/documentContentComponent/<% if(edit){%><%= documentContentComponent.id%>?_method=PUT<%}%>"
+        method="POST"
+      >
+        <h2>Содержательный компонент:</h2>
+        <label for="shortName">Обозначение</label>
+        <input
+          type="text"
+          id="shortName"
+          name="shortName"
+          placeholder="Обозначение..."
+          value="<% if(edit){%><%= documentContentComponent.shortName %><%}%>"
+        />
+
+        <label for="longNname">Компонент </label>
+        <input
+          type="text"
+          id="longNname"
+          name="longName"
+          placeholder="Компонент..."
+          value="<% if(edit){%><%= documentContentComponent.longName %><%}%>"
+        />
+        <input type="submit" value="Создайте" class="green" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<% layout('layouts/boilerplate') %>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 my-3">
+          <div class="projects mb-4">
+            <div class="projects-inner">
+              <header class="projects-header">
+                <div class="title">Уровень документа</div>
+                <!-- <i class="zmdi zmdi-download"></i> -->
+                <i class="zmdi">
+                  <a href="/admin/documentLevel/create">Создайте</a>
+                </i>
+              </header>
+              <table class="projects-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Обозначение</th>
+                    <th>Наименование</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+               
+                <% for (let document of documentsLevel) {%>
+                <tr>
+                  <td><%= ++counter %></td>
+                  <td><%= document.shortName %></td>
+                  <td><%= document.longName %></td>
+                  <!-- <td>Delete</td> -->
+                  <td class="delete-container">
+                    <form
+                      action="/admin/documentLevel/<%= document.id %>?_method=DELETE"
+                      method="POST"
+                    >
+                      <button type="submit" class="btn btn-danger">
+                        <i class="zmdi zmdi-delete"></i> Delete
+                      </button>
+                    </form>
+                    <a
+                      href="/admin/documentLevel/<%= document.id %>"
+                      class="btn btn-primary"
+                      ><i class="zmdi zmdi-edit"></i> Edit</a
+                    >
+                  </td>
+                </tr>
+                <%}%>
+              </table>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+

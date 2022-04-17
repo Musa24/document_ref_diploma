@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="mainForm-container">
+      <form
+        action="/admin/document/<% if(edit){%><%= documentLevel.id%>?_method=PUT<%}%>"
+        method="POST"
+      >
+        <h2>Документ:</h2>
+        <label for="documentNumber">Номер Документа</label>
+        <input
+          type="text"
+          id="documentNumber"
+          name="documentNumber"
+          placeholder="Номер Документа..."
+          value="<% if(edit){%><%= document.documentNumber %><%}%>"
+        />
+        <label for="documentNumber">Уровень документа</label>
+        <select name="documentLevel">
+          <% for(let document of documentsLevel) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="documentType">Тип документа</label>
+        <select name="documentType">
+          <% for(let document of documentsType) { %>
+          <option value="<%= document.id %>"><%= document.shortName %></option>
+          <%}%>
+        </select>
+        <button class="classfierBtn">ОКС</button>
+        <div class="classContainer">
+          <label for="documentType">Группа</label>
+          <select name="groupOKS" class="groupSelect">
+            <option value="none">--</option>
+            <% for(let document of documentClassifierOKS.groupOKS) { %>
+            <option value="<%= document.id %>" class="groupOKS">
+              <%= document.groupNumber %> | <%= document.groupName %>
+            </option>
+            <%}%>
+          </select>
+
+          <br />
+          <label for="documentType">Подгруппа</label>
+          <select name="subGroupOKS" class="subGroupSelect">
+            <option value="none">--</option>
+            <% for(let document of documentClassifierOKS.subGroupOKS) { %>
+            <option
+              data-subgroupOKS="<%= document.group %>"
+              value="<%= document.id %>"
+              class="hide subGroupOKS"
+            >
+              <%= document.subGroupNumber %> | <%= document.subGroupName %>
+            </option>
+            <%}%>
+          </select>
+          <label for="documentType">Группа подгруппы </label>
+          <select name="subGroupGroupOKS" class="subGroupGroupOKS-select">
+            <option>--</option>
+            <% for(let document of documentClassifierOKS.subGroupGroupOKS) { %>
+            <option
+              value="<%= document.id %>"
+              class="hide subGroupGroupOKS"
+              data-subGroupGroupOKS="<%= document.subGroup %>"
+            >
+              <%= document.subGroupGroupNumber %> | <%=
+              document.subGroupGroupName %>
+            </option>
+            <%}%>
+          </select>
+          <button class="btnRemove">X</button>
+        </div>
+        <label for="documentTC">Классификатор ТС</label>
+        <select name="documentTC">
+          <% for(let document of documentsTC) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="documentRegAppAuth">Орган утверждения регламента</label>
+        <select name="documentRegAppAuth">
+          <% for(let document of documentsRegAppAuth) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="documentName">Наименование</label>
+        <input
+          type="text"
+          id="documentName"
+          name="documentName"
+          placeholder="Наименование..."
+        />
+        <label for="documentStatus">Статус документа</label>
+        <select name="documentStatus">
+          <% for(let document of documentsStatus) { %>
+          <option value="<%= document.id %>"><%= document.longName %></option>
+          <%}%>
+        </select>
+        <label for="introductionDate"> Дата введения</label>
+        <input
+          type="date"
+          id="introductionDate"
+          name="introductionDate"
+          placeholder=" Дата введения..."
+        />
+        <label for="publicationDate"> Дата издания</label>
+        <input
+          type="date"
+          id="publicationDate"
+          name="publicationDate"
+          placeholder=" Дата издания..."
+        />
+        <label for="documentReissue">Переиздание</label>
+        <input
+          type="text"
+          id="documentReissue"
+          name="documentReissue"
+          placeholder="Переиздание..."
+        />
+        <label for="lastModifiedDate"> Дата последнего изменения</label>
+        <input
+          type="date"
+          id="lastModifiedDate"
+          name="lastModifiedDate"
+          placeholder=" Дата последнего изменения..."
+        />
+        <input type="submit" value="Создайте" class="green" />
+      </form>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
